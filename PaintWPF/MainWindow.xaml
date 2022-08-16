@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:PaintWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Canvas Background="LightGray" x:Name="DrawCanvas" Margin="0,50,0,0" MouseDown="DrawCanvas_MouseDown" MouseUp="DrawCanvas_MouseUp">
-        <Button Content="draw a line" Canvas.Left="40" Canvas.Top="-40" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Width="84"/>
+    <Canvas Background="LightGray" x:Name="DrawCanvas" Margin="0,50,0,0" MouseDown="DrawCanvas_MouseDown" MouseUp="DrawCanvas_MouseUp" MouseMove="DrawCanvas_MouseMove">
+        <Button Content="draw a line" Canvas.Left="40" Canvas.Top="-40" HorizontalAlignment="Left" VerticalAlignment="Center" Width="84"/>
     </Canvas>
 
 

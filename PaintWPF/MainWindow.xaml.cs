@@ -21,57 +21,46 @@ namespace PaintWPF
     public partial class MainWindow : Window
     {
 
-        Point p1 = new Point();
-        Point p2 = new Point();
-
+        Line line = new Line();
+        Boolean drawing = false;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //MessageBox.Show("OK");
-
-            Line line = new Line();
-            line.StrokeThickness = 1;
-            line.Stroke = Brushes.Black;
-
-            line.X1 = 10;
-            line.Y1 = 10;
-            line.X2 = 100;
-            line.Y2 = 100;
-
-            DrawCanvas.Children.Add(line);
-
-
-        }
 
         private void DrawCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            p1 = e.GetPosition(DrawCanvas);
+            drawing = true;
+
+            Point point = e.GetPosition(DrawCanvas);
+
+            line = new Line();
+            line.StrokeThickness = 1;
+            line.Stroke = Brushes.Black;
+            line.X1 = point.X;
+            line.Y1 = point.Y;
+
         }
 
         private void DrawCanvas_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            p2 = e.GetPosition(DrawCanvas);
-            DrawALine();
-
+            drawing = false;
         }
 
-        private void DrawALine()
+        private void DrawCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-            Line line = new Line();
-            line.StrokeThickness = 1;
-            line.Stroke = Brushes.Black;
+            if (drawing)
+            {
+                DrawCanvas.Children.Remove(line);
 
-            line.X1 = p1.X;
-            line.Y1 = p1.Y;
-            line.X2 = p2.X;
-            line.Y2 = p2.Y;
+                Point point = e.GetPosition(DrawCanvas);
+                line.X2 = point.X;
+                line.Y2 = point.Y;
 
-            DrawCanvas.Children.Add(line);
+                DrawCanvas.Children.Add(line);
+            }
         }
     }
 }
