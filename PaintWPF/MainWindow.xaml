@@ -8,6 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Canvas Background="LightGray" x:Name="DrawCanvas" Margin="0,50,0,0" MouseDown="DrawCanvas_MouseDown" MouseUp="DrawCanvas_MouseUp" MouseMove="DrawCanvas_MouseMove">
         <Button Content="draw a line" Canvas.Left="40" Canvas.Top="-40" HorizontalAlignment="Left" VerticalAlignment="Center" Width="84"/>
+        <Button Content="remove a line" Canvas.Left="150" Canvas.Top="-40" Width="84" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_Click"/>
     </Canvas>
 
 

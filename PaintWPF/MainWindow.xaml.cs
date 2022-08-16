@@ -117,5 +117,14 @@ namespace PaintWPF
             }
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(seldLine is Line)
+            {
+                DrawCanvas.Children.Remove(seldLine);
+                
+            }
+        }
     }
 }
