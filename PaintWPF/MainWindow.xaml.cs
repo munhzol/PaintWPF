@@ -20,6 +20,11 @@ namespace PaintWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        Point p1 = new Point();
+        Point p2 = new Point();
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -45,11 +50,28 @@ namespace PaintWPF
 
         private void DrawCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Point point = e.GetPosition(DrawCanvas);
+            p1 = e.GetPosition(DrawCanvas);
+        }
 
-            String msg = $"{point.X} - {point.Y}";
+        private void DrawCanvas_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            p2 = e.GetPosition(DrawCanvas);
+            DrawALine();
 
-            MessageBox.Show(msg);
+        }
+
+        private void DrawALine()
+        {
+            Line line = new Line();
+            line.StrokeThickness = 1;
+            line.Stroke = Brushes.Black;
+
+            line.X1 = p1.X;
+            line.Y1 = p1.Y;
+            line.X2 = p2.X;
+            line.Y2 = p2.Y;
+
+            DrawCanvas.Children.Add(line);
         }
     }
 }
