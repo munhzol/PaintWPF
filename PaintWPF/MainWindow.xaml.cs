@@ -43,5 +43,13 @@ namespace PaintWPF
 
         }
 
+        private void DrawCanvas_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Point point = e.GetPosition(DrawCanvas);
+
+            String msg = $"{point.X} - {point.Y}";
+
+            MessageBox.Show(msg);
+        }
     }
 }
