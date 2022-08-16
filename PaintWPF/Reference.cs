@@ -71,3 +71,26 @@
  */
 
 
+
+//Remove from canvas
+/*
+  DrawCanvas.Children.Remove(seldLine);
+ */
+
+
+
+//Get sender as a LINE
+/*
+   private void LineMouse_Leave(object sender, RoutedEventArgs e)
+        {
+            if (sender is Line)
+            {
+                Line aLine = (Line)sender;
+
+                if(seldLine != aLine)
+                 aLine.Stroke = Brushes.Black;
+
+            }
+
+        }
+ */

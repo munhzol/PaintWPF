@@ -33,6 +33,8 @@ namespace PaintWPF
 
             seldLine.StrokeThickness = 1;
             seldLine.Stroke = Brushes.Red;
+
+
         }
 
 
