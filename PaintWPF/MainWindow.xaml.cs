@@ -22,11 +22,17 @@ namespace PaintWPF
     {
 
         Line line = new Line();
+        
+        Line seldLine = new Line();
+
         Boolean drawing = false;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            seldLine.StrokeThickness = 1;
+            seldLine.Stroke = Brushes.Red;
         }
 
 
@@ -48,7 +54,9 @@ namespace PaintWPF
         {
             if (drawing)
             {
-                line.MouseMove += new MouseEventHandler(LineMouse_Move);
+                line.MouseEnter += new MouseEventHandler(LineMouse_Enter);
+                line.MouseLeave += new MouseEventHandler(LineMouse_Leave);
+                line.MouseDown += new MouseButtonEventHandler(LineMouse_Down);
                 drawing = false;
             }
            
@@ -65,14 +73,49 @@ namespace PaintWPF
                 line.Y2 = point.Y;
 
                 DrawCanvas.Children.Add(line);
-
-                
             }
         }
 
-        private void LineMouse_Move(object sender, RoutedEventArgs e)
+        private void LineMouse_Enter(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Hello line");
+            if (sender is Line) { 
+                Line aLine = (Line)sender;
+
+                if (seldLine != aLine)
+                    aLine.Stroke = new SolidColorBrush(Colors.LimeGreen);
+
+            }
+        }
+
+        private void LineMouse_Down(object sender, RoutedEventArgs e)
+        {
+            if (sender is Line)
+            {
+                if (seldLine!=null)
+                {
+                    seldLine.Stroke = Brushes.Black;
+                }
+
+                Line aLine = (Line)sender;
+                aLine.Stroke = new SolidColorBrush(Colors.Red);
+
+                seldLine = aLine;
+
+            }
+        }
+
+
+        private void LineMouse_Leave(object sender, RoutedEventArgs e)
+        {
+            if (sender is Line)
+            {
+                Line aLine = (Line)sender;
+
+                if(seldLine != aLine)
+                 aLine.Stroke = Brushes.Black;
+
+            }
+
         }
     }
 }
