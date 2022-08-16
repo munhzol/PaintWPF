@@ -24,5 +24,24 @@ namespace PaintWPF
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show("OK");
+
+            Line line = new Line();
+            line.StrokeThickness = 1;
+            line.Stroke = Brushes.Black;
+
+            line.X1 = 10;
+            line.Y1 = 10;
+            line.X2 = 100;
+            line.Y2 = 100;
+
+            DrawCanvas.Children.Add(line);
+
+
+        }
+
     }
 }

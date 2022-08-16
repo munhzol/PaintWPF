@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:PaintWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Canvas x:Name="DrawCanvas" Margin="0,100,0,0">
+        <Button Content="Button" Canvas.Left="129" Canvas.Top="-73" Click="Button_Click"/>
+    </Canvas>
 
-    </Grid>
+
+
+
 </Window>
