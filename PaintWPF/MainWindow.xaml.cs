@@ -46,7 +46,12 @@ namespace PaintWPF
 
         private void DrawCanvas_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            drawing = false;
+            if (drawing)
+            {
+                line.MouseMove += new MouseEventHandler(LineMouse_Move);
+                drawing = false;
+            }
+           
         }
 
         private void DrawCanvas_MouseMove(object sender, MouseEventArgs e)
@@ -60,7 +65,14 @@ namespace PaintWPF
                 line.Y2 = point.Y;
 
                 DrawCanvas.Children.Add(line);
+
+                
             }
+        }
+
+        private void LineMouse_Move(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hello line");
         }
     }
 }
