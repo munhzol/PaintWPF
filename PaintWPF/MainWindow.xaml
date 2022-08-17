@@ -5,12 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PaintWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Canvas Background="LightGray" x:Name="DrawCanvas" Margin="0,50,0,0" MouseDown="DrawCanvas_MouseDown" MouseUp="DrawCanvas_MouseUp" MouseMove="DrawCanvas_MouseMove">
-        <Button Content="draw a line" Canvas.Left="40" Canvas.Top="-40" HorizontalAlignment="Left" VerticalAlignment="Center" Width="84"/>
-        <Button Content="remove a line" Canvas.Left="150" Canvas.Top="-40" Width="84" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_Click"/>
-    </Canvas>
+        Title="MainWindow" Height="450" Width="800"
+        >
+    <DockPanel LastChildFill="True">
 
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit" />
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem Header="_Users">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/User.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Show groups" IsCheckable="True" IsChecked="True" />
+            </MenuItem>
+        </Menu>
+
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button ToolTip="New File">
+                    <Image Source="/Resources/Images/NewDocument.png" />
+                </Button>
+
+                <Button ToolTip="Open File">
+                    <Image Source="/Resources/Images/OpenFile.png" />
+                </Button>
+
+                <Button ToolTip="Save File">
+                    <Image Source="/Resources/Images/Save.png" />
+                </Button>
+
+                <Button ToolTip="Save File">
+                    <TextBlock>
+                        Save File
+                    </TextBlock>
+                </Button>
+
+                <ToggleButton ToolTip="Draw Shape" Click="BtnDraw_Click">
+                    <TextBlock>
+                        Draw Shape
+                    </TextBlock>
+                </ToggleButton>
+
+                <Button Command="Copy" ToolTip="Copy selection">
+                    <TextBlock>
+                        Copy
+                    </TextBlock>
+                </Button>
+
+            </ToolBar>
+
+            <ToolBar>
+
+                <ToggleButton ToolTip="Draw Shape" Click="BtnDraw_Click">
+                    <Image Source="/Resources/Images/PenTool.png" />
+                </ToggleButton>
+
+                <Button ToolTip="New File">
+                    <Image Source="/Resources/Images/NewDocument.png" />
+                </Button>
+
+                <Button ToolTip="Open File">
+                    <Image Source="/Resources/Images/OpenFile.png" />
+                </Button>
+
+                <Button ToolTip="Save File">
+                    <Image Source="/Resources/Images/Save.png" />
+                </Button>
+
+            </ToolBar>
+
+
+        </ToolBarTray>
+
+        <Canvas Background="LightGray" x:Name="DrawCanvas" Margin="0,0,0,0" MouseDown="DrawCanvas_MouseDown" MouseUp="DrawCanvas_MouseUp" MouseMove="DrawCanvas_MouseMove">
+            <Polygon Name="polygon" Points="500,0 10,10 100,130 120,180" Stroke="Black" Fill="Azure" StrokeThickness="1" />
+        </Canvas>
+    </DockPanel>
 
 
 

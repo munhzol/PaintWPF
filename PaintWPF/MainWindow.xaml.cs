@@ -27,6 +27,13 @@ namespace PaintWPF
 
         Boolean drawing = false;
 
+        Document doc = new Document();
+
+
+        Shape seldShape;
+        bool dragging = false;
+        Point clickV;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,12 +41,34 @@ namespace PaintWPF
             seldLine.StrokeThickness = 1;
             seldLine.Stroke = Brushes.Red;
 
+            Polygon myPoly = new Polygon();
+            myPoly.Points.Add(new Point(10, 10));
+            myPoly.Points.Add(new Point(85, 350));
+            myPoly.Points.Add(new Point(15, 80));
+            myPoly.Points.Add(new Point(85, 20));
+            myPoly.Fill = new SolidColorBrush(Colors.Blue);
 
+            
+
+            myPoly.MouseDown += new MouseButtonEventHandler(myPoly_MouseDown);
+            DrawCanvas.MouseMove += new MouseEventHandler(DrawCanvas_MouseMove);
+            DrawCanvas.MouseUp += new MouseButtonEventHandler(DrawCanvas_MouseUp);
+
+            DrawCanvas.Children.Add(myPoly);
+
+        }
+
+        private void myPoly_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            dragging = true;
+            seldShape = (Shape)sender;
+            clickV = e.GetPosition(seldShape);
         }
 
 
         private void DrawCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            /*
             drawing = true;
 
             Point point = e.GetPosition(DrawCanvas);
@@ -49,6 +78,9 @@ namespace PaintWPF
             line.Stroke = Brushes.Black;
             line.X1 = point.X;
             line.Y1 = point.Y;
+            */
+
+         
 
         }
 
@@ -61,6 +93,8 @@ namespace PaintWPF
                 line.MouseDown += new MouseButtonEventHandler(LineMouse_Down);
                 drawing = false;
             }
+
+            dragging = false;
            
         }
 
@@ -75,6 +109,14 @@ namespace PaintWPF
                 line.Y2 = point.Y;
 
                 DrawCanvas.Children.Add(line);
+            }
+
+            Polygon p = (Polygon)seldShape;
+            if (dragging)
+            {
+                Canvas.SetLeft(p, e.GetPosition(DrawCanvas).X - clickV.X);
+                Canvas.SetTop(p, e.GetPosition(DrawCanvas).Y - clickV.Y);
+
             }
         }
 
@@ -127,6 +169,18 @@ namespace PaintWPF
                 DrawCanvas.Children.Remove(seldLine);
                 
             }
+        }
+
+
+        private void BtnDraw_Click(object sender, RoutedEventArgs e)
+        {
+            //DrawCanvas.Cursor = Cursors.Cross;
+            //MessageBox.Show("Ok");
+
+
+
+
+
         }
     }
 }

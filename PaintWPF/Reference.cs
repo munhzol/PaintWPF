@@ -94,3 +94,20 @@
 
         }
  */
+
+
+
+
+//Stack elements
+
+/*
+ 
+    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="8">
+            <Button Content="draw a line" Canvas.Left="40" Canvas.Top="-40" HorizontalAlignment="Left" VerticalAlignment="Center" Width="84"/>
+            <Button Content="remove a line" Canvas.Left="150" Canvas.Top="-40" Width="84" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_Click"/>
+        </StackPanel>
+ 
+ */
+
+
+
