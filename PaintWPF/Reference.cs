@@ -111,3 +111,25 @@
 
 
 
+
+// ELLIPSE, RECTANGLE
+/*
+ 
+  Ellipse startPoint = new Ellipse()
+        {
+            Stroke = Brushes.Black,
+            StrokeThickness = 1,
+            Width = 8,
+            Height = 8,
+        };
+
+        Rectangle rect = new Rectangle()
+        {
+            Stroke = Brushes.Black,
+            StrokeThickness = 1,
+            Width = 8,
+            Height = 8,
+        };
+
+
+ */

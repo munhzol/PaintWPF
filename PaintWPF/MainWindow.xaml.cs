@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,21 +19,43 @@ namespace PaintWPF
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
 
-        Line line = new Line();
+        bool drawingShape = false;
+        PointCollection points = new PointCollection();
+
+        Polyline polyLine = new Polyline()
+        {
+            Stroke = Brushes.Black,
+            StrokeThickness = 1,
+        };
+
+        Point startPoint = new Point();
+        Rectangle startPointMarker = new Rectangle()
+        {
+            Stroke = Brushes.Black,
+            StrokeThickness = 1,
+            Width = 8,
+            Height = 8,
+        };
+
+        Line line = new Line()
+        {
+            Stroke = Brushes.Black,
+            StrokeThickness = 1,
+        };
+
         
+
         Line seldLine = new Line();
-
         Boolean drawing = false;
-
-        Document doc = new Document();
-
-
         Shape seldShape;
         bool dragging = false;
         Point clickV;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        PointCollection imagePoints;
 
         public MainWindow()
         {
@@ -41,6 +64,12 @@ namespace PaintWPF
             seldLine.StrokeThickness = 1;
             seldLine.Stroke = Brushes.Red;
 
+            this.ImagePoints = new PointCollection(
+                new[] { new Point(10, 10), new Point(80, 80), new Point(50, 60) }
+                );
+            this.DataContext = this;
+
+            /*
             Polygon myPoly = new Polygon();
             myPoly.Points.Add(new Point(10, 10));
             myPoly.Points.Add(new Point(85, 350));
@@ -55,7 +84,25 @@ namespace PaintWPF
             DrawCanvas.MouseUp += new MouseButtonEventHandler(DrawCanvas_MouseUp);
 
             DrawCanvas.Children.Add(myPoly);
+            */
 
+        }
+
+
+        public PointCollection ImagePoints
+        {
+            get { return imagePoints; }
+            set
+            {
+                if (this.imagePoints != value)
+                {
+                    this.imagePoints = value;
+                    if (this.PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("ImagePoints"));
+                    }
+                }
+            }
         }
 
         private void myPoly_MouseDown(object sender, MouseButtonEventArgs e)
@@ -80,12 +127,56 @@ namespace PaintWPF
             line.Y1 = point.Y;
             */
 
-         
+            if (drawingShape)
+            {
+                AddPoint(e.GetPosition(DrawCanvas));
+            }
+
+        }
+
+        private void AddPoint(Point newPoint)
+        {
+            if (points.Count() == 0)
+            {
+                if (!DrawCanvas.Children.Contains(startPointMarker)) { 
+                    DrawCanvas.Children.Add(startPointMarker);
+                } else
+                {
+                    startPointMarker.Visibility = Visibility.Visible;
+                }
+
+                startPoint = newPoint;
+
+                startPointMarker.SetValue(Canvas.LeftProperty, (double)newPoint.X-4);
+                startPointMarker.SetValue(Canvas.TopProperty, (double)newPoint.Y-4);
+            } else
+            {
+                if (DrawCanvas.Children.Contains(polyLine)){
+                    DrawCanvas.Children.Remove(polyLine);
+                }
+
+                polyLine.Points = points;
+                DrawCanvas.Children.Add(polyLine);
+
+            }
+
+            
+            points.Add(newPoint);
+
+            line.X1 = newPoint.X;
+            line.Y1 = newPoint.Y;
 
         }
 
         private void DrawCanvas_MouseUp(object sender, MouseButtonEventArgs e)
         {
+
+            if (drawingShape)
+            {
+
+            }
+
+            /*
             if (drawing)
             {
                 line.MouseEnter += new MouseEventHandler(LineMouse_Enter);
@@ -95,14 +186,18 @@ namespace PaintWPF
             }
 
             dragging = false;
-           
+           */
         }
 
         private void DrawCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-            if (drawing)
+
+            if(drawingShape && points.Count>0)
             {
+                if (DrawCanvas.Children.Contains(line))
+                {
                 DrawCanvas.Children.Remove(line);
+                }
 
                 Point point = e.GetPosition(DrawCanvas);
                 line.X2 = point.X;
@@ -111,6 +206,10 @@ namespace PaintWPF
                 DrawCanvas.Children.Add(line);
             }
 
+            /*
+           
+
+            
             Polygon p = (Polygon)seldShape;
             if (dragging)
             {
@@ -118,6 +217,7 @@ namespace PaintWPF
                 Canvas.SetTop(p, e.GetPosition(DrawCanvas).Y - clickV.Y);
 
             }
+            */
         }
 
         private void LineMouse_Enter(object sender, RoutedEventArgs e)
@@ -167,20 +267,26 @@ namespace PaintWPF
             if(seldLine is Line)
             {
                 DrawCanvas.Children.Remove(seldLine);
-                
             }
         }
 
 
         private void BtnDraw_Click(object sender, RoutedEventArgs e)
         {
-            //DrawCanvas.Cursor = Cursors.Cross;
-            //MessageBox.Show("Ok");
+            DrawCanvas.Cursor = Cursors.Cross;
+            drawingShape = true;
+        }
 
-
-
-
-
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Random rnd = new Random();
+            this.ImagePoints = new PointCollection(
+                new[] { 
+                    new Point((int)rnd.Next(1,500), (int)rnd.Next(1, 500)),
+                    new Point((int)rnd.Next(1,500), (int)rnd.Next(1, 500)),
+                    new Point((int)rnd.Next(1,500), (int)rnd.Next(1, 500)),
+                }
+                );
         }
     }
 }

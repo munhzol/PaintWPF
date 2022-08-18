@@ -26,7 +26,7 @@
         <ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
                 <Button ToolTip="New File">
-                    <Image Source="/Resources/Images/NewDocument.png" />
+                    <Image Source="/NewDocument.png" />
                 </Button>
 
                 <Button ToolTip="Open File">
@@ -37,9 +37,9 @@
                     <Image Source="/Resources/Images/Save.png" />
                 </Button>
 
-                <Button ToolTip="Save File">
+                <Button ToolTip="Set New Points" Click="Button_Click_1">
                     <TextBlock>
-                        Save File
+                        Set New Points
                     </TextBlock>
                 </Button>
 
@@ -81,7 +81,7 @@
         </ToolBarTray>
 
         <Canvas Background="LightGray" x:Name="DrawCanvas" Margin="0,0,0,0" MouseDown="DrawCanvas_MouseDown" MouseUp="DrawCanvas_MouseUp" MouseMove="DrawCanvas_MouseMove">
-            <Polygon Name="polygon" Points="500,0 10,10 100,130 120,180" Stroke="Black" Fill="Azure" StrokeThickness="1" />
+            <Polygon x:Name="imgPolygon" Points="{Binding ImagePoints}" Stretch="Fill" Fill="Black" Opacity="0.8" />
         </Canvas>
     </DockPanel>
 
