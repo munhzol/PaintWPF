@@ -224,3 +224,49 @@
             <Polygon x:Name="imgPolygon" Points="{Binding ImagePoints}" Stretch="Fill" Fill="Black" Opacity="0.8" />
         </Canvas>
  */
+
+
+
+
+
+
+
+// Binding with ShapePointCollection class
+/*
+
+    ....
+    ShapePointCollection spc = new ShapePointCollection();
+    ....
+
+    public MainWindow()
+        {
+            InitializeComponent();
+
+            spc.ShapePoints = new PointCollection(
+                new[] { new Point(10, 10), new Point(80, 80), new Point(50, 60) }
+                );
+
+            Binding myBinding = new Binding("ShapePoints");
+            myBinding.Source = spc;
+
+            Polygon myPoly = new Polygon();
+            myPoly.Fill = new SolidColorBrush(Colors.Blue);
+            myPoly.SetBinding(Polygon.PointsProperty, myBinding);
+            DrawCanvas.Children.Add(myPoly);
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
+            Random rnd = new Random();
+            spc.ShapePoints = new PointCollection(
+                new[] { 
+                    new Point((int)rnd.Next(1,500), (int)rnd.Next(1, 500)),
+                    new Point((int)rnd.Next(1,500), (int)rnd.Next(1, 500)),
+                    new Point((int)rnd.Next(1,500), (int)rnd.Next(1, 500)),
+                }
+                );
+        }
+
+ */

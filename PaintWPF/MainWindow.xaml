@@ -79,10 +79,18 @@
 
 
         </ToolBarTray>
+        <Border BorderBrush="DarkGray" BorderThickness="1">
 
-        <Canvas Background="LightGray" x:Name="DrawCanvas" Margin="0,0,0,0">
-            <Polygon x:Name="imgPolygon" Points="{Binding ImagePoints}" Stretch="Fill" Fill="Black" Opacity="0.8" />
-        </Canvas>
+        <Canvas Background="LightGray" AllowDrop="True" x:Name="DrawCanvas" Margin="0,0,0,0" Drop="DrawCanvas_Drop" DragOver="DrawCanvas_DragOver">
+                <Rectangle MouseMove="redRectangle_MouseMove" Canvas.Left="100"  Canvas.Top="100" Fill="Red" Name="redRectangle" Width="50" Height="50"/>
+
+                <local:RectangleA Fill="Green"  Canvas.Left="200" Canvas.Top="100" />
+                <local:RectangleA Fill="Yellow"  Canvas.Left="300" Canvas.Top="100" />
+                <local:RectangleA Fill="Pink"  Canvas.Left="400" Canvas.Top="100" />
+
+
+            </Canvas>
+        </Border>
     </DockPanel>
 
 

@@ -8,11 +8,16 @@ using System.Windows.Media;
 
 namespace PaintWPF
 {
+    /// <summary>
+    /// Provides Shape Point Collection Binding
+    /// </summary>
+    /// 
     internal class ShapePointCollection : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private PointCollection shapePoints;
+
         public ShapePointCollection() { }
 
         public PointCollection ShapePoints
