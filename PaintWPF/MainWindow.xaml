@@ -43,7 +43,7 @@
                     </TextBlock>
                 </Button>
 
-                <ToggleButton ToolTip="Draw Shape" Click="BtnDraw_Click">
+                <ToggleButton ToolTip="Draw Shape" >
                     <TextBlock>
                         Draw Shape
                     </TextBlock>
@@ -59,7 +59,7 @@
 
             <ToolBar>
 
-                <ToggleButton ToolTip="Draw Shape" Click="BtnDraw_Click">
+                <ToggleButton ToolTip="Draw Shape">
                     <Image Source="/Resources/Images/PenTool.png" />
                 </ToggleButton>
 
@@ -80,7 +80,7 @@
 
         </ToolBarTray>
 
-        <Canvas Background="LightGray" x:Name="DrawCanvas" Margin="0,0,0,0" MouseDown="DrawCanvas_MouseDown" MouseUp="DrawCanvas_MouseUp" MouseMove="DrawCanvas_MouseMove">
+        <Canvas Background="LightGray" x:Name="DrawCanvas" Margin="0,0,0,0">
             <Polygon x:Name="imgPolygon" Points="{Binding ImagePoints}" Stretch="Fill" Fill="Black" Opacity="0.8" />
         </Canvas>
     </DockPanel>

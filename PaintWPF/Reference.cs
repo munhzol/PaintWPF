@@ -133,3 +133,94 @@
 
 
  */
+
+
+
+
+
+
+// Variable Binding
+
+/*
+
+   // MainWindow.xaml.cs
+
+    public partial class MainWindow : Window, INotifyPropertyChanged
+    .....
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+    PointCollection imagePoints;
+ 
+ 
+    
+    public MainWindow()
+    {
+        InitializeComponent();
+
+        .......
+
+        this.ImagePoints = new PointCollection(
+                new[] { new Point(10, 10), new Point(80, 80), new Point(50, 60) }
+                );
+        this.DataContext = this;
+
+        ......
+    }
+
+    public PointCollection ImagePoints
+        {
+            get { return imagePoints; }
+            set
+            {
+                if (this.imagePoints != value)
+                {
+                    this.imagePoints = value;
+                    if (this.PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("ImagePoints"));
+                    }
+                }
+            }
+        }
+
+
+       private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Random rnd = new Random();
+            this.ImagePoints = new PointCollection(
+                new[] { 
+                    new Point((int)rnd.Next(1,500), (int)rnd.Next(1, 500)),
+                    new Point((int)rnd.Next(1,500), (int)rnd.Next(1, 500)),
+                    new Point((int)rnd.Next(1,500), (int)rnd.Next(1, 500)),
+                }
+                );
+        }
+
+
+
+   // MainWindow.xaml
+
+     ......
+     <Polygon x:Name="imgPolygon" Points="{Binding ImagePoints}" Stretch="Fill" Fill="Black" Opacity="0.8" />
+
+     <Button ToolTip="Set New Points" Click="Button_Click_1">
+        <TextBlock>
+          Set New Points
+         </TextBlock>
+     </Button>
+    .........
+
+ 
+ */
+
+
+
+
+
+
+
+/*
+   <Canvas Background="LightGray" x:Name="DrawCanvas" Margin="0,0,0,0" MouseDown="DrawCanvas_MouseDown" MouseUp="DrawCanvas_MouseUp" MouseMove="DrawCanvas_MouseMove">
+            <Polygon x:Name="imgPolygon" Points="{Binding ImagePoints}" Stretch="Fill" Fill="Black" Opacity="0.8" />
+        </Canvas>
+ */
