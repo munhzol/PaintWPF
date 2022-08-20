@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PaintWPF"
              mc:Ignorable="d" 
              x:Name="root"
-             d:DesignHeight="50" d:DesignWidth="50">
+             d:DesignHeight="500" d:DesignWidth="500">
     <Rectangle 
         Width="50"
         Height="50"

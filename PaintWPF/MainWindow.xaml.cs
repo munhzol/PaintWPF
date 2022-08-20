@@ -25,7 +25,9 @@ namespace PaintWPF
         ShapePointCollection spc = new ShapePointCollection();
         Polygon myPoly = new Polygon();
 
-        Shape seldShape;
+        //UIElement seldShape;
+        //Nullable<Point> dragStart = null;
+        UIElement seldShape;
 
         public MainWindow()
         {
@@ -44,23 +46,14 @@ namespace PaintWPF
             myPoly.Fill = new SolidColorBrush(Colors.Blue);
             myPoly.SetBinding(Polygon.PointsProperty, myBinding);
             myPoly.Name = "myPoly";
+            myPoly.MouseMove += new MouseEventHandler(redRectangle_MouseMove);
 
             DrawCanvas.Children.Add(myPoly);
 
-            /*
-            MyPolygon poly = new MyPolygon()
-            {
-                points = new PointCollection(
-                new[] { new Point(10, 10), new Point(80, 80), new Point(50, 60) }
-                ),
-                Stroke = Brushes.Black,
-                StrokeThickness = 1,
-            };
-            DrawCanvas.Children.Add(poly.Polygon);
-            */
 
             RectangleA recA = new RectangleA();
             recA.Fill = Brushes.Blue;
+            recA.MouseMove += new MouseEventHandler(redRectangle_MouseMove);
             DrawCanvas.Children.Add(recA);
 
         }
@@ -93,7 +86,12 @@ namespace PaintWPF
         {
             if(e.LeftButton == MouseButtonState.Pressed)
             {
-                seldShape = (Shape)sender;
+
+                //var element = (UIElement)sender;
+                
+                seldShape = (UIElement)sender;
+                //seldShape = (Shape)sender;
+
                 DragDrop.DoDragDrop(seldShape, seldShape, DragDropEffects.Move);
             }
         }

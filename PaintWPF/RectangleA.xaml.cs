@@ -22,6 +22,8 @@ namespace PaintWPF
     {
         public static readonly DependencyProperty
             FillProperty = DependencyProperty.Register("Fill", typeof(Brush), typeof(RectangleA), new PropertyMetadata(Brushes.Black));
+
+
         public RectangleA()
         {
             InitializeComponent();
@@ -33,5 +35,9 @@ namespace PaintWPF
             get { return (Brush)GetValue(FillProperty); }
             set { SetValue(FillProperty, value); }
         }
+
+
+        
+      
     }
 }
