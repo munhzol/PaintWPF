@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PaintWPF"
+        xmlns:local="clr-namespace:PaintWPF" xmlns:components="clr-namespace:PaintWPF.Components"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         >
@@ -79,18 +79,9 @@
 
 
         </ToolBarTray>
-        <Border BorderBrush="DarkGray" BorderThickness="1">
 
-        <Canvas Background="LightGray" AllowDrop="True" x:Name="DrawCanvas" Margin="0,0,0,0" Drop="DrawCanvas_Drop" DragOver="DrawCanvas_DragOver">
-                <Rectangle MouseMove="redRectangle_MouseMove" Canvas.Left="100"  Canvas.Top="100" Fill="Red" Name="redRectangle" Width="50" Height="50"/>
+        <components:UCCanvas x:Name="ucCanwas"/>
 
-                <local:RectangleA MouseMove="redRectangle_MouseMove" Fill="Green"  Canvas.Left="200" Canvas.Top="100" />
-                <local:RectangleA MouseMove="redRectangle_MouseMove" Fill="Yellow"  Canvas.Left="300" Canvas.Top="100" />
-                <local:RectangleA MouseMove="redRectangle_MouseMove" Fill="Pink"  Canvas.Left="400" Canvas.Top="100" />
-
-
-            </Canvas>
-        </Border>
     </DockPanel>
 
 

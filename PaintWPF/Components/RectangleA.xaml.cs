@@ -36,6 +36,11 @@ namespace PaintWPF
             set { SetValue(FillProperty, value); }
         }
 
+        public void Blah()
+        {
+            Console.WriteLine("Blah Blah Blah Blah Blah");
+        }
+
 
         
       

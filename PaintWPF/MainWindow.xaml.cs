@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PaintWPF.Components;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -22,17 +23,18 @@ namespace PaintWPF
     public partial class MainWindow : Window
     {
 
-        ShapePointCollection spc = new ShapePointCollection();
-        Polygon myPoly = new Polygon();
+       // ShapePointCollection spc = new ShapePointCollection();
+       // Polygon myPoly = new Polygon();
 
-        //UIElement seldShape;
-        //Nullable<Point> dragStart = null;
-        UIElement seldShape;
+     
 
         public MainWindow()
         {
             InitializeComponent();
 
+            
+
+            /*
             spc.ShapePoints = new PointCollection(
                 new[] { new Point(10, 10), new Point(80, 80), new Point(50, 60) }
                 );
@@ -48,20 +50,23 @@ namespace PaintWPF
             myPoly.Name = "myPoly";
             myPoly.MouseMove += new MouseEventHandler(redRectangle_MouseMove);
 
-            DrawCanvas.Children.Add(myPoly);
+          //  DrawCanvas.Children.Add(myPoly);
 
 
             RectangleA recA = new RectangleA();
             recA.Fill = Brushes.Blue;
             recA.MouseMove += new MouseEventHandler(redRectangle_MouseMove);
-            DrawCanvas.Children.Add(recA);
+           // DrawCanvas.Children.Add(recA);
 
+            recA.Blah();
+            */
         }
 
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
+            ucCanwas.Blah();
+            /*
             Random rnd = new Random();
             spc.ShapePoints = new PointCollection(
                 new[] { 
@@ -70,37 +75,8 @@ namespace PaintWPF
                     new Point((int)rnd.Next(1,500), (int)rnd.Next(1, 500)),
                 }
                 );
-           
+           */
         }
 
-        private void DrawCanvas_Drop(object sender, DragEventArgs e)
-        {
-            /*
-            Point dropPosition = e.GetPosition(DrawCanvas);
-            Canvas.SetLeft(redRectangle, dropPosition.X);
-            Canvas.SetTop(redRectangle, dropPosition.Y);
-            */
-        }
-
-        private void redRectangle_MouseMove(object sender, MouseEventArgs e)
-        {
-            if(e.LeftButton == MouseButtonState.Pressed)
-            {
-
-                //var element = (UIElement)sender;
-                
-                seldShape = (UIElement)sender;
-                //seldShape = (Shape)sender;
-
-                DragDrop.DoDragDrop(seldShape, seldShape, DragDropEffects.Move);
-            }
-        }
-
-        private void DrawCanvas_DragOver(object sender, DragEventArgs e)
-        {
-            Point dropPosition = e.GetPosition(DrawCanvas);
-            Canvas.SetLeft(seldShape, dropPosition.X);
-            Canvas.SetTop(seldShape, dropPosition.Y);
-        }
     }
 }
