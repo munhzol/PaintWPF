@@ -7,11 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Border BorderBrush="DarkGray" BorderThickness="1">
-        <Canvas Background="LightGray" AllowDrop="True" x:Name="DrawCanvas" Margin="0,0,0,0" Drop="DrawCanvas_Drop" DragOver="DrawCanvas_DragOver">
-            <paintwpf:RectangleA MouseMove="Drag_MouseMove" Fill="Green"  Canvas.Left="200" Canvas.Top="100" />
-            <paintwpf:RectangleA MouseMove="Drag_MouseMove" Fill="Yellow"  Canvas.Left="300" Canvas.Top="100" />
-            <paintwpf:RectangleA MouseMove="Drag_MouseMove" Fill="Pink"  Canvas.Left="400" Canvas.Top="100" />
-
+        <Canvas Background="LightGray" AllowDrop="True" x:Name="DrawCanvas" Margin="0,0,0,0" Drop="DrawCanvas_Drop" DragOver="DrawCanvas_DragOver" MouseLeftButtonDown="DrawCanvas_MouseLeftButtonDown" MouseMove="DrawCanvas_MouseMove" MouseRightButtonDown="DrawCanvas_MouseRightButtonDown">
+            <paintwpf:RectangleA MouseMove="Drag_MouseMove" MouseDown="RectangleA_MouseDown" Fill="Green"  Canvas.Left="200" Canvas.Top="100" />
+            <paintwpf:RectangleA MouseMove="Drag_MouseMove" Fill="Yellow"  Canvas.Left="300" Canvas.Top="100" MouseDown="startPointMarker_MouseDown"  />
+            <paintwpf:RectangleA MouseMove="Drag_MouseMove" Fill="Pink"  Canvas.Left="400" Canvas.Top="100" MouseDown="startPointMarker_MouseDown" />
         </Canvas>
     </Border>
 

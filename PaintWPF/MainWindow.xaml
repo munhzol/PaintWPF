@@ -33,6 +33,10 @@
                     <Image Source="/Resources/Images/OpenFile.png" />
                 </Button>
 
+                <ToggleButton ToolTip="Draw Shape">
+                    <Image Source="/Resources/Images/PenTool.png" />
+                </ToggleButton>
+
                 <Button ToolTip="Save File">
                     <Image Source="/Resources/Images/Save.png" />
                 </Button>
@@ -59,10 +63,13 @@
 
             <ToolBar>
 
-                <ToggleButton ToolTip="Draw Shape">
-                    <Image Source="/Resources/Images/PenTool.png" />
-                </ToggleButton>
+               
 
+                <Button ToolTip="Draw" Click="Button_Click">
+                    <Image Source="/Resources/Images/PenTool.png" />
+                </Button>
+                
+                
                 <Button ToolTip="New File">
                     <Image Source="/Resources/Images/NewDocument.png" />
                 </Button>

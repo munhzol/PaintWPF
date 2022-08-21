@@ -23,60 +23,20 @@ namespace PaintWPF
     public partial class MainWindow : Window
     {
 
-       // ShapePointCollection spc = new ShapePointCollection();
-       // Polygon myPoly = new Polygon();
-
-     
-
         public MainWindow()
         {
             InitializeComponent();
-
-            
-
-            /*
-            spc.ShapePoints = new PointCollection(
-                new[] { new Point(10, 10), new Point(80, 80), new Point(50, 60) }
-                );
-
-            spc.ShapePoints.Add(new Point(90, 300));
-
-            Binding myBinding = new Binding("ShapePoints");
-            myBinding.Source = spc;
-
-            
-            myPoly.Fill = new SolidColorBrush(Colors.Blue);
-            myPoly.SetBinding(Polygon.PointsProperty, myBinding);
-            myPoly.Name = "myPoly";
-            myPoly.MouseMove += new MouseEventHandler(redRectangle_MouseMove);
-
-          //  DrawCanvas.Children.Add(myPoly);
-
-
-            RectangleA recA = new RectangleA();
-            recA.Fill = Brushes.Blue;
-            recA.MouseMove += new MouseEventHandler(redRectangle_MouseMove);
-           // DrawCanvas.Children.Add(recA);
-
-            recA.Blah();
-            */
         }
 
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            ucCanwas.Blah();
-            /*
-            Random rnd = new Random();
-            spc.ShapePoints = new PointCollection(
-                new[] { 
-                    new Point((int)rnd.Next(1,500), (int)rnd.Next(1, 500)),
-                    new Point((int)rnd.Next(1,500), (int)rnd.Next(1, 500)),
-                    new Point((int)rnd.Next(1,500), (int)rnd.Next(1, 500)),
-                }
-                );
-           */
+            ucCanwas.Clear();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ucCanwas.StartDraw();
+        }
     }
 }
