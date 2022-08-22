@@ -63,13 +63,20 @@
 
             <ToolBar>
 
-               
 
-                <Button ToolTip="Draw" Click="Button_Click">
+
+                <Button ToolTip="Draw" Click="ButtonStartDraw_Click">
                     <Image Source="/Resources/Images/PenTool.png" />
                 </Button>
-                
-                
+
+                <Button ToolTip="Delete" Click="ButtonDeletePolygon_Click">
+                    <Image Source="/Resources/Images/Delete.png" />
+                </Button>
+
+                <Button ToolTip="Fill" Click="ButtonFillPolygon_Click">
+                    <Image Source="/Resources/Images/Fill.png" />
+                </Button>
+
                 <Button ToolTip="New File">
                     <Image Source="/Resources/Images/NewDocument.png" />
                 </Button>
@@ -83,6 +90,8 @@
                 </Button>
 
             </ToolBar>
+
+            
 
 
         </ToolBarTray>

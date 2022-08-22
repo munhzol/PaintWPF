@@ -8,7 +8,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Border BorderBrush="DarkGray" BorderThickness="1">
-        <Canvas Background="LightGray" AllowDrop="True" x:Name="mainCanvas" Margin="0,0,0,0" Drop="DrawCanvas_Drop" DragOver="DrawCanvas_DragOver" MouseLeftButtonDown="DrawCanvas_MouseLeftButtonDown" MouseMove="DrawCanvas_MouseMove" MouseRightButtonDown="DrawCanvas_MouseRightButtonDown">
+        <Canvas Background="LightGray" AllowDrop="True" x:Name="mainCanvas" Margin="0,0,0,0" 
+                Drop="DrawCanvas_Drop" 
+                DragOver="DrawCanvas_DragOver" 
+                MouseLeftButtonDown="DrawCanvas_MouseLeftButtonDown" 
+                MouseMove="DrawCanvas_MouseMove" 
+                MouseRightButtonDown="DrawCanvas_MouseRightButtonDown">
             <local:UCPainter x:Name="painter" DrawFinished="painter_DrawFinished" />
         </Canvas>
     </Border>

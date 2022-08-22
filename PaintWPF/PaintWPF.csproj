@@ -9,12 +9,23 @@
 
   <ItemGroup>
     <None Remove="NewDocument.png" />
+    <None Remove="Resources\Images\Delete.png" />
+    <None Remove="Resources\Images\Fill.png" />
     <None Remove="Resources\Images\NewDocument.png" />
     <None Remove="Resources\Images\OpenFile.png" />
     <None Remove="Resources\Images\PenOne.png" />
     <None Remove="Resources\Images\PenTool.png" />
     <None Remove="Resources\Images\Save.png" />
     <None Remove="Resources\Images\User.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Images\Delete.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Fill.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

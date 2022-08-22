@@ -24,8 +24,10 @@ namespace PaintWPF.Components
         // Drawing indicator
         bool drawing = false;
 
-        UIElement seldShape = new UIElement();
+        Polygon? seldShape = null;
 
+
+        // Mouse poistion when clicked on Canvas, it helps to move object properly
         Point clickV;
 
         public UCCanvas()
@@ -33,7 +35,13 @@ namespace PaintWPF.Components
             InitializeComponent();
         }
 
-        
+        public void DeletePolygon()
+        {
+            if (mainCanvas.Children.Contains(seldShape))
+                mainCanvas.Children.Remove(seldShape);
+        }
+
+
         public void StartDraw()
         {
             //Change cursor
@@ -53,6 +61,8 @@ namespace PaintWPF.Components
                 Point point = e.GetPosition(mainCanvas);
                 painter.AddPoint(point);
             }
+
+            //seldShape = null;
 
         }
 
@@ -101,7 +111,7 @@ namespace PaintWPF.Components
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                seldShape = (UIElement)sender;
+                seldShape = (Polygon)sender;
                 clickV = e.GetPosition(seldShape);  
                 DragDrop.DoDragDrop(seldShape, seldShape, DragDropEffects.Move);
             }
@@ -131,11 +141,31 @@ namespace PaintWPF.Components
             polygon.Stroke = new SolidColorBrush(Colors.Black);
             polygon.StrokeThickness = 1;
             polygon.MouseMove += new MouseEventHandler(Drag_MouseMove);
+            polygon.MouseDown += new MouseButtonEventHandler(Polygon_MouseDown);
 
             mainCanvas.Children.Add(polygon);
 
             
 
         }
+
+        private void Polygon_MouseDown(object sender, RoutedEventArgs e)
+        {
+            seldShape = (Polygon)sender;
+        }
+
+
+        public void FillPolygon()
+        {
+            if (seldShape != null)
+            {
+
+            Random r = new Random();
+
+            seldShape.Fill = new SolidColorBrush(
+                Color.FromRgb((byte)r.Next(1, 255), (byte)r.Next(1, 255), (byte)r.Next(1, 233)));
+            }
+        }
+
     }
 }

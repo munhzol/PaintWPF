@@ -34,9 +34,34 @@ namespace PaintWPF
             ucCanwas.Clear();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonStartDraw_Click(object sender, RoutedEventArgs e)
         {
             ucCanwas.StartDraw();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonDeletePolygon_Click(object sender, RoutedEventArgs e)
+        {
+            // add binding on seldShape to disable or enable this button
+
+            MessageBoxResult result = MessageBox.Show("Do you want to delete selected Polygon?",
+                "Confirmation", MessageBoxButton.OKCancel);
+
+            if(result == MessageBoxResult.OK)
+            {
+                ucCanwas.DeletePolygon();
+            }
+
+            
+        }
+
+        private void ButtonFillPolygon_Click(object sender, RoutedEventArgs e)
+        {
+            ucCanwas.FillPolygon();
         }
     }
 }
