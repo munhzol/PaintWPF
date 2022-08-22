@@ -24,7 +24,7 @@
         </Menu>
 
         <ToolBarTray DockPanel.Dock="Top">
-            <ToolBar>
+            <ToolBar IsEnabled="False">
                 <Button ToolTip="New File">
                     <Image Source="/NewDocument.png" />
                 </Button>
@@ -75,18 +75,6 @@
 
                 <Button ToolTip="Fill" Click="ButtonFillPolygon_Click">
                     <Image Source="/Resources/Images/Fill.png" />
-                </Button>
-
-                <Button ToolTip="New File">
-                    <Image Source="/Resources/Images/NewDocument.png" />
-                </Button>
-
-                <Button ToolTip="Open File">
-                    <Image Source="/Resources/Images/OpenFile.png" />
-                </Button>
-
-                <Button ToolTip="Save File">
-                    <Image Source="/Resources/Images/Save.png" />
                 </Button>
 
             </ToolBar>
