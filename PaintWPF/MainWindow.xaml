@@ -24,7 +24,7 @@
         </Menu>
 
         <ToolBarTray DockPanel.Dock="Top">
-            <ToolBar IsEnabled="False">
+            <ToolBar >
                 <Button ToolTip="New File">
                     <Image Source="/NewDocument.png" />
                 </Button>
@@ -47,15 +47,21 @@
                     </TextBlock>
                 </Button>
 
-                <ToggleButton ToolTip="Draw Shape" >
+                <ToggleButton ToolTip="Toggle" >
                     <TextBlock>
-                        Draw Shape
+                        Toggle
                     </TextBlock>
                 </ToggleButton>
 
-                <Button Command="Copy" ToolTip="Copy selection">
+                <Button ToolTip="Select Polygon" Click="Button_Click">
                     <TextBlock>
-                        Copy
+                        Select Polygon
+                    </TextBlock>
+                </Button>
+
+                <Button ToolTip="UnSelect Polygon" Click="Button_Click_3">
+                    <TextBlock>
+                        UnSelect Polygon
                     </TextBlock>
                 </Button>
 

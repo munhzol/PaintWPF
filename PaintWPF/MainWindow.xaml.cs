@@ -63,5 +63,18 @@ namespace PaintWPF
         {
             ucCanwas.FillPolygon();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //select polygon
+            ucCanwas.SelectPolygon();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            //unselect polygon
+            ucCanwas.UnSelectPolygon();
+
+        }
     }
 }
